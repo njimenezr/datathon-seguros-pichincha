@@ -31,7 +31,7 @@ compartes y proteges los datos) que la sofisticación técnica.
 
 ## Lo que tienes
 
-- Tus datos en **[`datos/`](datos/)** (3 tablas) → cárgalos con **[`cargar_datos.py`](cargar_datos.py)**.
+- Tus datos en **[`datos/`](datos/)** (3 tablas, Parquet) → súbelos a tu workspace (descubran cómo).
 - El significado de cada campo en **[`diccionario.md`](diccionario.md)**.
 - **El resto lo descubren ustedes:** qué cruzar, con quién, cómo crear el Clean Room y **cómo
   preparar los datos antes de compartirlos** (ver [`guia_participante.md`](guia_participante.md)).

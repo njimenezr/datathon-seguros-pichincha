@@ -21,21 +21,20 @@ usar señales de riesgo que hoy no ves para tarifar y retener mejor.
 
 ## Quick start
 
-1. **Sube este repo como Git folder** en tu workspace (Workspace → Create → Git folder → URL).
-2. Corre **[`cargar_datos.py`](cargar_datos.py)** — crea tu catálogo y carga las **3 tablas**
-   desde los Parquet de **[`datos/`](datos/)** (una sola vez).
-3. Lee **[`reto.md`](reto.md)** — tu desafío de negocio y los entregables por nivel.
-4. Ten a mano **[`diccionario.md`](diccionario.md)** — qué significa cada columna y cada término.
-5. Revisa **[`rubrica.md`](rubrica.md)** — cómo te evalúa el jurado.
-6. Prepara tu presentación con **[`pitch/plantilla_pitch.html`](pitch/plantilla_pitch.html)**.
-7. Guía general del día: **[`guia_participante.md`](guia_participante.md)**.
+1. Tus datos están en **[`datos/`](datos/)** (3 tablas en Parquet). **Súbelos a tu workspace como
+   veas conveniente** — descubran cómo hacerlo, es parte del reto.
+2. Lee **[`reto.md`](reto.md)** — tu desafío de negocio.
+3. Ten a mano **[`diccionario.md`](diccionario.md)** — qué significa cada columna y cada término.
+4. Revisa **[`rubrica.md`](rubrica.md)** — cómo te evalúa el jurado.
+5. Prepara tu presentación con **[`pitch/plantilla_pitch.html`](pitch/plantilla_pitch.html)**.
+6. Guía general del día: **[`guia_participante.md`](guia_participante.md)**.
 
 ## Importante
 
 - **Tu equipo arma el Clean Room.** No hay guía paso a paso: **descubran cómo crearlo** e
   invitar a Deuna y Banco para cruzar los datos — es parte del reto.
 - La **llave de cruce** entre empresas es siempre **`id_cliente_hash`**.
-- Tus datos vienen en **[`datos/`](datos/)** (Parquet) y los cargas tú con `cargar_datos.py`.
+- Tus datos vienen en **[`datos/`](datos/)** (Parquet); tu equipo decide cómo subirlos a su workspace.
 - Ve rápido con **Genie Code** (el asistente de IA de Databricks): descríbele en español lo que
   quieres y te escribe el SQL, los notebooks y los modelos.
 

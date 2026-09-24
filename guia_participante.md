@@ -6,10 +6,10 @@ todo, **qué tener en cuenta antes de compartir datos** con otra empresa.
 
 ## 1. Carga tus datos
 
-1. Sube este repo como **Git folder** en tu workspace (Workspace → Create → Git folder → URL).
-2. Corre **[`cargar_datos.py`](cargar_datos.py)** → crea tus 3 tablas en `seguros.clean_room`
-   (`clientes_seguros`, `dim_documento`, `fact_produccion_individual`).
-3. Consulta **[`diccionario.md`](diccionario.md)** para entender cada campo.
+- Tus datos están en **[`datos/`](datos/)** (3 tablas en Parquet: `clientes_seguros`,
+  `dim_documento`, `fact_produccion_individual`). **Súbelos a tu workspace como veas
+  conveniente** — descubran cómo cargarlos, es parte del reto.
+- Consulta **[`diccionario.md`](diccionario.md)** para entender cada campo.
 
 ## 2. Es un reto colaborativo
 
