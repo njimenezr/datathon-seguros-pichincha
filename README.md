@@ -38,4 +38,12 @@ usar señales de riesgo que hoy no ves para tarifar y retener mejor.
 - Ve rápido con **Genie Code** (el asistente de IA de Databricks): descríbele en español lo que
   quieres y te escribe el SQL, los notebooks y los modelos.
 
+## Material de apoyo (decks)
+
+Presentaciones de Databricks para el datathon (Unity Catalog, Delta Sharing, Genie, etc.):
+
+**https://github.com/njimenezr/datathon-presentaciones**
+
+> Repo privado — pide acceso al organizador para entrar.
+
 ¡Éxitos! 🚀
