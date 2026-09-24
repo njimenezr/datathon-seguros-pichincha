@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plantilla de Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --lava:#FF3621; --navy:#0B2026; --light:#F9F7F4;
+    --ink:#0B2026; --muted:#5A6B6E; --line:#E4E0D8; --card:#FFFFFF;
+    --accent-soft:#FFE7E2;
+    color-scheme: light;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--light); color:var(--ink);
+    font-family:"DM Sans",-apple-system,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; overflow:hidden;
+  }
+  .deck{height:100%; position:relative}
+  .slide{
+    position:absolute; inset:0; display:none; flex-direction:column; justify-content:center;
+    padding:clamp(28px,6vw,90px); padding-block:clamp(28px,6vw,90px);
+    max-width:1100px; margin:0 auto;
+  }
+  .slide.active{display:flex; animation:fade .45s ease}
+  @keyframes fade{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
+  .eyebrow{
+    font-size:13px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--lava); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:26px; height:3px; background:var(--lava); border-radius:2px}
+  h1{font-size:clamp(34px,6vw,68px); line-height:1.02; font-weight:800; margin:0 0 20px; text-wrap:balance; letter-spacing:-.02em}
+  h2{font-size:clamp(26px,4.4vw,46px); line-height:1.06; font-weight:800; margin:0 0 24px; text-wrap:balance; letter-spacing:-.015em}
+  p{font-size:clamp(16px,1.9vw,21px); line-height:1.5; color:var(--muted); max-width:62ch; margin:0 0 16px}
+  .lead{font-size:clamp(18px,2.2vw,24px); color:var(--ink)}
+  .fill{
+    display:inline-block; background:var(--accent-soft); color:var(--lava);
+    border:1px dashed var(--lava); border-radius:8px; padding:2px 10px; font-weight:500;
+    font-family:"DM Mono",monospace; font-size:.92em;
+  }
+  .grid{display:grid; gap:18px; margin-top:8px}
+  .g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:720px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 24px}
+  .card h3{margin:0 0 8px; font-size:17px; font-weight:700; color:var(--ink)}
+  .card p{font-size:15px; margin:0}
+  .kpi{font-size:clamp(30px,4vw,44px); font-weight:800; color:var(--lava); font-variant-numeric:tabular-nums; line-height:1}
+  .kpi + span{font-size:14px; color:var(--muted); display:block; margin-top:6px}
+  ul{margin:6px 0 0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:12px}
+  li{font-size:clamp(15px,1.8vw,19px); line-height:1.45; padding-left:26px; position:relative; color:var(--ink)}
+  li::before{content:""; position:absolute; left:0; top:.55em; width:9px; height:9px; background:var(--lava); border-radius:2px}
+  .cover{background:var(--navy); color:var(--light)}
+  .cover h1{color:#fff}
+  .cover .eyebrow{color:#FF7A66}
+  .cover p{color:#B7C4C6}
+  .brandbar{display:flex; align-items:center; gap:12px; margin-top:36px; font-size:14px; color:#8FA0A2}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--lava)}
+  /* chrome */
+  .nav{position:fixed; bottom:18px; left:0; right:0; display:flex; justify-content:center; align-items:center; gap:14px; z-index:10}
+  .dots{display:flex; gap:8px}
+  .dots button{width:9px;height:9px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0}
+  .dots button.on{background:var(--lava); transform:scale(1.25)}
+  .arrow{background:var(--card); border:1px solid var(--line); color:var(--ink); width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:18px;line-height:1;display:grid;place-items:center}
+  .arrow:hover{border-color:var(--lava); color:var(--lava)}
+  .counter{position:fixed; top:20px; right:24px; font-family:"DM Mono",monospace; font-size:13px; color:var(--muted); z-index:10}
+  .hint{position:fixed; bottom:20px; right:24px; font-size:12px; color:var(--muted); z-index:10}
+  @media(max-width:600px){.hint{display:none}}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <section class="slide cover active">
+    <div class="eyebrow">Datathon Grupo Pichincha</div>
+    <h1>[Nombre del equipo]</h1>
+    <p class="lead">Empresa: <span class="fill">[Deuna / Banco / Seguros]</span> &nbsp;·&nbsp; Reto: <span class="fill">[título del reto]</span></p>
+    <div class="brandbar"><span class="dot"></span> Integrantes: <span class="fill">[nombres]</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">El problema</div>
+    <h2>¿Qué problema de negocio resolvemos?</h2>
+    <p class="lead">[Describe en 1-2 frases el problema de tu empresa: p. ej. "Deuna pierde comercios por churn y no sabe a quién priorizar".]</p>
+    <ul>
+      <li>A quién afecta: <span class="fill">[segmento / área]</span></li>
+      <li>Costo de no resolverlo: <span class="fill">[$ / clientes / riesgo]</span></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Datos + cruce seguro</div>
+    <h2>Combinamos datos entre empresas <em>sin exponer PII</em></h2>
+    <div class="grid g3">
+      <div class="card"><h3>Nuestros datos</h3><p><span class="fill">[tabla propia]</span></p></div>
+      <div class="card"><h3>Datos que sumamos vía Clean Room</h3><p><span class="fill">[Banco / Deuna / Seguros]</span></p></div>
+      <div class="card"><h3>Llave del cruce</h3><p><code>id_cliente_hash</code> — SHA-256, sin cédula real</p></div>
+    </div>
+    <p style="margin-top:20px">Cómo lo hicimos seguro: <span class="fill">[Clean Room de Databricks: cada empresa aporta su tabla, nadie ve la fila del otro]</span></p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">La solución</div>
+    <h2>Qué construimos</h2>
+    <div class="grid g2">
+      <div class="card"><h3>Insight / Modelo</h3><p><span class="fill">[dashboard, propensión, churn, riesgo…]</span></p></div>
+      <div class="card"><h3>Capa GenAI</h3><p><span class="fill">[Genie Space, AI Functions, agente, app…]</span></p></div>
+    </div>
+    <p style="margin-top:18px">Cómo genera valor: <span class="fill">[explica la acción de negocio que habilita]</span></p>
+  </section>
+
+  <section class="slide cover">
+    <div class="eyebrow">Demo en vivo</div>
+    <h1>Veámoslo funcionando</h1>
+    <p class="lead">[Deja este slide como señal para hacer la demo: muestra el dashboard, pregúntale al Genie/agente en vivo, o corre el modelo.]</p>
+    <div class="brandbar"><span class="dot"></span> Tip: deja una pregunta lista para que el jurado se la haga a tu Genie.</div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Impacto</div>
+    <h2>El valor, en números</h2>
+    <div class="grid g3">
+      <div class="card"><div class="kpi">[##]</div><span>[clientes / comercios impactados]</span></div>
+      <div class="card"><div class="kpi">$[##]</div><span>[oportunidad estimada]</span></div>
+      <div class="card"><div class="kpi">[##]%</div><span>[mejora en retención / cross-sell / riesgo]</span></div>
+    </div>
+    <p style="margin-top:20px">Supuesto detrás del número: <span class="fill">[cómo lo calculaste]</span></p>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow">Arquitectura</div>
+    <h2>Qué de Databricks usamos</h2>
+    <ul>
+      <li>Clean Rooms — colaboración segura entre empresas</li>
+      <li>Unity Catalog — gobierno y pseudonimización</li>
+      <li><span class="fill">[Genie · AI/BI Dashboards · AI Functions · MLflow · Agent Bricks · Apps]</span></li>
+      <li>Genie Code — nos aceleró en <span class="fill">[dónde]</span></li>
+    </ul>
+  </section>
+
+  <section class="slide cover">
+    <div class="eyebrow">Cierre</div>
+    <h1>Próximos pasos</h1>
+    <ul style="margin-top:8px">
+      <li style="color:#fff">[Qué haría falta para llevarlo a producción]</li>
+      <li style="color:#fff">[Qué otro dato del grupo sumaría valor]</li>
+    </ul>
+    <div class="brandbar"><span class="dot"></span> ¡Gracias! — [Nombre del equipo]</div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">01 / 08</div>
+<div class="nav">
+  <button class="arrow" id="prev" aria-label="Anterior">‹</button>
+  <div class="dots" id="dots"></div>
+  <button class="arrow" id="next" aria-label="Siguiente">›</button>
+</div>
+<div class="hint">← → para navegar</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const dots=document.getElementById('dots');
+  const counter=document.getElementById('counter');
+  let i=0;
+  slides.forEach((_,n)=>{const b=document.createElement('button');b.onclick=()=>go(n);dots.appendChild(b);});
+  function go(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
+    counter.textContent=String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+  }
+  document.getElementById('next').onclick=()=>go(i+1);
+  document.getElementById('prev').onclick=()=>go(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1)}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+  });
+  go(0);
+</script>
+</body>
+</html>
