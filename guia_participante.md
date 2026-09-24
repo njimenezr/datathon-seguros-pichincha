@@ -20,7 +20,8 @@
 
 - Tu equipo pertenece a **Seguros del Pichincha**.
 - Usa el **login compartido** que te dio el organizador para el workspace (trial) de Seguros.
-- Ahí verás tus tablas en el catálogo:
+- **Carga tus datos:** sube este repo como **Git folder** y corre **`cargar_datos.py`** (crea tu
+  catálogo y las 3 tablas desde los Parquet de `datos/`). Tus tablas quedan en:
 
 | Empresa | Tus tablas |
 |---|---|
